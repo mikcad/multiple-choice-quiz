@@ -20,3 +20,13 @@ let timerDisplay = document.getElementById("time");
 
 // highscore variables
 const highScore = document.getElementById("scores");
+
+
+// Functions
+function startQuiz () {
+   startContainer.classList.add("hide");
+}
+
+
+// Event Listeners
+startButton.addEventListener("click", startQuiz);
