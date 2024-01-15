@@ -87,3 +87,8 @@ body {
    right: 10px;
  }
  
+ .clicked {
+  /* Add any styling you want for clicked buttons */
+  pointer-events: none; /* Disable pointer events to make buttons unclickable */
+  opacity: 0.5; /* Example: Reduce opacity to visually indicate the button has been clicked */
+}

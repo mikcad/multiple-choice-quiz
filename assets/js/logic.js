@@ -18,7 +18,7 @@ const submitButton = document.getElementById("submit");
 let quizFeedback = document.getElementById("feedback");
 
 // timer variables
-const timerContianer = document.getElementById("timer-container");
+const timerContainer = document.getElementById("timer-container");
 let timerDisplay = document.getElementById("time");
 
 // highscore variables
@@ -26,6 +26,9 @@ const highScore = document.getElementById("scores");
 
 let scoreCount = 0; // stores the score of the player
 let questionIndex = 0; // stores the current index of the questions list
+let isCorrect = true; // stores the boolean state of the choice selected
+let timerCount = 60; // stores the current timer value
+var timerInterval; // makes the timerInterval a global variable
 
 
 // Functions
@@ -34,6 +37,7 @@ function startQuiz () {
    startContainer.classList.add("hide");
    questionContainer.classList.remove("hide");
    displayQuestion();
+   startTimer();
 }
 
 // fucntion for displaying questions from the list
@@ -48,31 +52,36 @@ function displayChoices() {
    const choices = questions[questionIndex].choices;
    const answer = questions[questionIndex].answer;
    questionChoices.innerHTML = "";
+   questionChoices.classList.remove("clicked");
    for (let i = 0; i < choices.length; i++) {
       const choiceButton = document.createElement("button");
       questionChoices.appendChild(choiceButton);
       choiceButton.textContent = choices[i];
       choiceButton.addEventListener("click", function() {
          console.log(questionIndex);
-         if (choices[i] === answer) {
-            isCorrect = true;
-            console.log("correct", choices[i]);
-            scoreCount += 10;
-            console.log("current score:", scoreCount);
-            feedback();
-            setTimeout(nextQuestion, 2000);
-         } else {
-            isCorrect = false;
-            console.log("incorrect", choices[i]);
-            feedback();
-            setTimeout(nextQuestion, 2000);
+         if (!questionChoices.classList.contains("clicked")) {
+            if (choices[i] === answer) {
+               isCorrect = true;
+               console.log("correct", choices[i]);
+               scoreCount += 10;
+               console.log("current score:", scoreCount);
+               feedback();
+               setTimeout(nextQuestion, 2000);
+            } else {
+               isCorrect = false;
+               console.log("incorrect", choices[i]);
+               timerCount -= 8;
+               feedback();
+               setTimeout(nextQuestion, 2000);
+            }
          }
+         questionChoices.classList.add("clicked"); // disables the choice button 
       })
    }
 }
 
 // function to add feedback when the choice is selected
-let isCorrect = true;
+
 function feedback() {
    quizFeedback.classList.remove("hide");
    if (isCorrect === true) {
@@ -95,9 +104,23 @@ function nextQuestion() {
    }
 }
 
+// fucntion to start a timer for the quiz
+function startTimer() {
+   timerContainer.classList.remove("hide");
+   timerInterval = setInterval(function() {
+      timerCount--;
+      if (timerCount >= 0) {
+         timerDisplay.textContent = timerCount;
+      } else {
+         endQuiz();
+      }
+   }, 1000);
+}
+
 // fucntion to end the quiz
 function endQuiz() {
    // add the final score to the endscreen
+   clearInterval(timerInterval);
    finalScore.textContent = scoreCount;
    questionContainer.classList.add("hide");
    endContainer.classList.remove("hide");
