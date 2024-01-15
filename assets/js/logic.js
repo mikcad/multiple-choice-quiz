@@ -42,11 +42,18 @@ function displayQuestion() {
 
 function displayChoices() {
    const choices = questions[questionIndex].choices;
+   const answer = questions[questionIndex].answer;
    for (let i = 0; i < choices.length; i++) {
       const choiceButton = document.createElement("button");
       questionChoices.appendChild(choiceButton);
       choiceButton.textContent = choices[i];
-      
+      choiceButton.addEventListener("click", function() {
+         if (choices[i] === answer) {
+            console.log("correct");
+         } else {
+            console.log("incorrect");
+         }
+      })
       
    }
 }
