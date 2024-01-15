@@ -14,12 +14,18 @@ let finalScore = document.getElementById("final-score");
 let playerInitials = document.getElementById("initials");
 const submitButton = document.getElementById("submit");
 
+// feedback variables
+let quizFeedback = document.getElementById("feedback");
+
 // timer variables
 const timerContianer = document.getElementById("timer-container");
 let timerDisplay = document.getElementById("time");
 
 // highscore variables
 const highScore = document.getElementById("scores");
+
+let scoreCount = 0; // stores the score of the player
+let questionIndex = 0; // stores the current index of the questions list
 
 
 // Functions
@@ -30,8 +36,6 @@ function startQuiz () {
    displayQuestion();
 }
 
-// stores the current index of the questions list
-let questionIndex = 0; 
 // fucntion for displaying questions from the list
 function displayQuestion() {
    const currentQuestion = questions[questionIndex].title;
@@ -51,21 +55,37 @@ function displayChoices() {
       choiceButton.addEventListener("click", function() {
          console.log(questionIndex);
          if (choices[i] === answer) {
+            isCorrect = true;
             console.log("correct", choices[i]);
             scoreCount += 10;
             console.log("current score:", scoreCount);
-            nextQuestion();
+            feedback();
+            setTimeout(nextQuestion, 2000);
          } else {
+            isCorrect = false;
             console.log("incorrect", choices[i]);
-            nextQuestion();
+            feedback();
+            setTimeout(nextQuestion, 2000);
          }
       })
+   }
+}
+
+// function to add feedback when the choice is selected
+let isCorrect = true;
+function feedback() {
+   quizFeedback.classList.remove("hide");
+   if (isCorrect === true) {
+      quizFeedback.textContent = "Correct! You get +10 points."
+   } else {
+      quizFeedback.textContent = "Incorrect! You get -10 seconds."
    }
 }
 
 //  function to go to the next question and increment the current questionIndex
 function nextQuestion() {
    questionIndex++;
+   quizFeedback.classList.add("hide");
    
    if (questionIndex < questions.length) {
       displayQuestion();
@@ -75,7 +95,6 @@ function nextQuestion() {
    }
 }
 
-let scoreCount = 0; // stores the score of the player
 // fucntion to end the quiz
 function endQuiz() {
    // add the final score to the endscreen
@@ -83,6 +102,7 @@ function endQuiz() {
    questionContainer.classList.add("hide");
    endContainer.classList.remove("hide");
 }
+
 
 // Event Listeners
 startButton.addEventListener("click", startQuiz);
