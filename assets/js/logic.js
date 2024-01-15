@@ -30,16 +30,16 @@ function startQuiz () {
    displayQuestion();
 }
 
+// stores the current index of the questions list
+let questionIndex = 0; 
 // fucntion for displaying questions from the list
-
-let questionIndex = 0; // stores the current index of the questions list
-
 function displayQuestion() {
    const currentQuestion = questions[questionIndex].title;
    questionTitle.textContent = currentQuestion;
    displayChoices();
 }
 
+// function to create and display buttons for each choice for the current question
 function displayChoices() {
    const choices = questions[questionIndex].choices;
    const answer = questions[questionIndex].answer;
@@ -51,16 +51,19 @@ function displayChoices() {
       choiceButton.addEventListener("click", function() {
          console.log(questionIndex);
          if (choices[i] === answer) {
-            console.log("correct");
+            console.log("correct", choices[i]);
+            scoreCount += 10;
+            console.log("current score:", scoreCount);
             nextQuestion();
          } else {
-            console.log("incorrect");
+            console.log("incorrect", choices[i]);
             nextQuestion();
          }
       })
    }
 }
 
+//  function to go to the next question and increment the current questionIndex
 function nextQuestion() {
    questionIndex++;
    
@@ -68,11 +71,18 @@ function nextQuestion() {
       displayQuestion();
    } else {
       console.log("End of the quiz");
-      questionContainer.classList.add("hide");
-      endContainer.classList.remove("hide");
+      endQuiz();
    }
 }
 
+let scoreCount = 0; // stores the score of the player
+// fucntion to end the quiz
+function endQuiz() {
+   // add the final score to the endscreen
+   finalScore.textContent = scoreCount;
+   questionContainer.classList.add("hide");
+   endContainer.classList.remove("hide");
+}
 
 // Event Listeners
 startButton.addEventListener("click", startQuiz);
