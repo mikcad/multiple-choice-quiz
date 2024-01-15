@@ -23,8 +23,16 @@ const highScore = document.getElementById("scores");
 
 
 // Functions
+// fucntion that runs when the start button is clicked
 function startQuiz () {
    startContainer.classList.add("hide");
+}
+
+// fucntion for displaying questions from the list
+function displayQuestion() {
+   questionContainer.classList.remove("hide");
+   
+
 }
 
 
