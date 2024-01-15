@@ -26,6 +26,7 @@ const highScore = document.getElementById("scores");
 // fucntion that runs when the start button is clicked
 function startQuiz () {
    startContainer.classList.add("hide");
+   questionContainer.classList.remove("hide");
    displayQuestion();
 }
 
@@ -34,7 +35,6 @@ function startQuiz () {
 let questionIndex = 0; // stores the current index of the questions list
 
 function displayQuestion() {
-   questionContainer.classList.remove("hide");
    const currentQuestion = questions[questionIndex].title;
    questionTitle.textContent = currentQuestion;
    displayChoices();
@@ -43,18 +43,33 @@ function displayQuestion() {
 function displayChoices() {
    const choices = questions[questionIndex].choices;
    const answer = questions[questionIndex].answer;
+   questionChoices.innerHTML = "";
    for (let i = 0; i < choices.length; i++) {
       const choiceButton = document.createElement("button");
       questionChoices.appendChild(choiceButton);
       choiceButton.textContent = choices[i];
       choiceButton.addEventListener("click", function() {
+         console.log(questionIndex);
          if (choices[i] === answer) {
             console.log("correct");
+            nextQuestion();
          } else {
             console.log("incorrect");
+            nextQuestion();
          }
       })
-      
+   }
+}
+
+function nextQuestion() {
+   questionIndex++;
+   
+   if (questionIndex < questions.length) {
+      displayQuestion();
+   } else {
+      console.log("End of the quiz");
+      questionContainer.classList.add("hide");
+      endContainer.classList.remove("hide");
    }
 }
 
