@@ -26,13 +26,17 @@ const highScore = document.getElementById("scores");
 // fucntion that runs when the start button is clicked
 function startQuiz () {
    startContainer.classList.add("hide");
+   displayQuestion();
 }
 
 // fucntion for displaying questions from the list
+
+let questionIndex = 0; // stores the current index of the questions list
+
 function displayQuestion() {
    questionContainer.classList.remove("hide");
-   
-
+   const currentQuestion = questions[questionIndex].title;
+   questionTitle.textContent = currentQuestion;
 }
 
 
