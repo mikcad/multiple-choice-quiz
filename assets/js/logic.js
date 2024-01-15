@@ -6,7 +6,7 @@ const startButton = document.getElementById("start");
 // question screen variables
 const questionContainer = document.getElementById("questions");
 let questionTitle = document.getElementById("question-title");
-let questionChoices = document.getElementById("choices");
+const questionChoices = document.getElementById("choices");
 
 // end screen variables
 const endContainer = document.getElementById("end-screen");
@@ -37,6 +37,18 @@ function displayQuestion() {
    questionContainer.classList.remove("hide");
    const currentQuestion = questions[questionIndex].title;
    questionTitle.textContent = currentQuestion;
+   displayChoices();
+}
+
+function displayChoices() {
+   const choices = questions[questionIndex].choices;
+   for (let i = 0; i < choices.length; i++) {
+      const choiceButton = document.createElement("button");
+      questionChoices.appendChild(choiceButton);
+      choiceButton.textContent = choices[i];
+      
+      
+   }
 }
 
 
