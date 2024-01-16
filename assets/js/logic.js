@@ -126,6 +126,17 @@ function endQuiz() {
    endContainer.classList.remove("hide");
 }
 
+//fucntion to submit score after completed
+function submitScore() {
+   const userInitials = initials.value;
+   const userScore = counter;
+
+   localStorage.setItem("initials", userInitials);
+   localStorage.setItem("score", userScore);
+   console.log(localStorage);
+}
+
 
 // Event Listeners
 startButton.addEventListener("click", startQuiz);
+submitButton.addEventListener("click", submitScore);
