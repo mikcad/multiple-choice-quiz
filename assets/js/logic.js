@@ -21,8 +21,7 @@ let quizFeedback = document.getElementById("feedback");
 const timerContainer = document.getElementById("timer-container");
 let timerDisplay = document.getElementById("time");
 
-// highscore variables
-const highScore = document.getElementById("scores");
+
 
 let scoreCount = 0; // stores the score of the player
 let questionIndex = 0; // stores the current index of the questions list
@@ -64,6 +63,7 @@ function displayChoices() {
                isCorrect = true;
                console.log("correct", choices[i]);
                scoreCount += 10;
+               timerCount += 2;
                console.log("current score:", scoreCount);
                feedback();
                setTimeout(nextQuestion, 2000);
@@ -127,13 +127,23 @@ function endQuiz() {
 }
 
 //fucntion to submit score after completed
-function submitScore() {
-   const userInitials = initials.value;
-   const userScore = counter;
+function submitScore(event) {
+   event.preventDefault();
 
-   localStorage.setItem("initials", userInitials);
-   localStorage.setItem("score", userScore);
-   console.log(localStorage);
+   const userInitials = playerInitials.value;
+   const userScore = scoreCount;
+
+   if (playerInitials.value) {
+
+      localStorage.setItem(userInitials, userScore);
+      // localStorage.setItem("score", userScore);
+      console.log(localStorage);
+      submit.classList.add("clicked");
+
+      window.location.href = "/highscores.html";
+   } else {
+      alert("Your input box is empty");
+   }
 }
 
 
