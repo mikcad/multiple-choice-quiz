@@ -1,5 +1,6 @@
 // highscore variables
 const highScore = document.getElementById("highscores");
+const clearButton = document.getElementById("clear");
 
 
 function displayScores() {
@@ -12,18 +13,17 @@ function displayScores() {
    }
 }
 
-const clearButton = document.getElementById("clear");
 // function to clear highscores
 function clearScores() {
    // event.preventDefault();
    localStorage.clear();
-   console.log(localStorage);
+   // console.log(localStorage);
    highScore.innerHTML = "";
 }
-
-
-clearButton.addEventListener("click", clearScores);
 
 window.onload = function() {
    displayScores();
 };
+
+
+clearButton.addEventListener("click", clearScores);
