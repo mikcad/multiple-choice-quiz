@@ -12,6 +12,18 @@ function displayScores() {
    }
 }
 
+const clearButton = document.getElementById("clear");
+// function to clear highscores
+function clearScores() {
+   // event.preventDefault();
+   localStorage.clear();
+   console.log(localStorage);
+   highScore.innerHTML = "";
+}
+
+
+clearButton.addEventListener("click", clearScores);
+
 window.onload = function() {
    displayScores();
 };

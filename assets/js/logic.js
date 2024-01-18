@@ -26,7 +26,7 @@ let timerDisplay = document.getElementById("time");
 let scoreCount = 0; // stores the score of the player
 let questionIndex = 0; // stores the current index of the questions list
 let isCorrect = true; // stores the boolean state of the choice selected
-let timerCount = 60; // stores the current timer value
+let timerCount = 1; // stores the current timer value
 var timerInterval; // makes the timerInterval a global variable
 
 
@@ -145,6 +145,7 @@ function submitScore(event) {
       alert("Your input box is empty");
    }
 }
+
 
 
 // Event Listeners
