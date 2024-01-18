@@ -26,7 +26,7 @@ let timerDisplay = document.getElementById("time");
 let scoreCount = 0; // stores the score of the player
 let questionIndex = 0; // stores the current index of the questions list
 let isCorrect = true; // stores the boolean state of the choice selected
-let timerCount = 1; // stores the current timer value
+let timerCount = 60; // stores the current timer value
 var timerInterval; // makes the timerInterval a global variable
 
 
@@ -61,15 +61,15 @@ function displayChoices() {
          if (!questionChoices.classList.contains("clicked")) {
             if (choices[i] === answer) {
                isCorrect = true;
-               console.log("correct", choices[i]);
+               // console.log("correct", choices[i]);
                scoreCount += 10;
                timerCount += 2;
-               console.log("current score:", scoreCount);
+               // console.log("current score:", scoreCount);
                feedback();
                setTimeout(nextQuestion, 2000);
             } else {
                isCorrect = false;
-               console.log("incorrect", choices[i]);
+               // console.log("incorrect", choices[i]);
                timerCount -= 8;
                feedback();
                setTimeout(nextQuestion, 2000);
@@ -81,7 +81,6 @@ function displayChoices() {
 }
 
 // function to add feedback when the choice is selected
-
 function feedback() {
    quizFeedback.classList.remove("hide");
    if (isCorrect === true) {
