@@ -26,5 +26,4 @@ let questions = [
     }
     // Add more questions as needed
   ];
-
-  questions = shuffleArray(questions);
+  

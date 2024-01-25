@@ -156,11 +156,14 @@ function submitScore(event) {
    const userInitials = playerInitials.value;
    const userScore = scoreCount;
 
-   if (playerInitials.value) {
+   // clearing the timer
+   clearInterval(timerInterval);
+
+   if (playerInitials.value.trim() !== "") { // checks if there is an input
       localStorage.setItem(userInitials, userScore);
       // localStorage.setItem("score", userScore);
       console.log(localStorage);
-      submit.classList.add("clicked");
+      submitButton.classList.add("clicked");
       window.location.href = "/highscores.html";
    } else {
       alert("Your input box is empty, please enter your initials.");
