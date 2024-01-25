@@ -126,7 +126,8 @@ function nextQuestion() {
 function startTimer() {
    timerContainer.classList.remove("hide");
    timerInterval = setInterval(function() {
-      timerCount--;
+   timerCount--;
+
       if (timerCount >= 0) {
          timerDisplay.textContent = timerCount;
       } else {
@@ -152,12 +153,10 @@ function submitScore(event) {
    const userScore = scoreCount;
 
    if (playerInitials.value) {
-
       localStorage.setItem(userInitials, userScore);
       // localStorage.setItem("score", userScore);
       console.log(localStorage);
       submit.classList.add("clicked");
-
       window.location.href = "/highscores.html";
    } else {
       alert("Your input box is empty, please enter your initials.");
