@@ -52,14 +52,20 @@ function displayQuestion() {
 function displayChoices() {
    const choices = questions[questionIndex].choices;
    const answer = questions[questionIndex].answer;
+   const shuffledChoices = shuffleArray(choices);
+   
    questionChoices.innerHTML = "";
    questionChoices.classList.remove("clicked");
-   for (let i = 0; i < choices.length; i++) {
+
+   for (let i = 0; i < shuffledChoices.length; i++) {
       const choiceButton = document.createElement("button");
       questionChoices.appendChild(choiceButton);
-      choiceButton.textContent = choices[i];
+      choiceButton.textContent = shuffledChoices[i];
+
+      //event listener for when a choice is clicked
       choiceButton.addEventListener("click", function() {
          console.log(questionIndex);
+         // logic to check if the choice is correct or not
          if (!questionChoices.classList.contains("clicked")) {
             if (choices[i] === answer) {
                isCorrect = true;
@@ -80,6 +86,15 @@ function displayChoices() {
          questionChoices.classList.add("clicked"); // disables the choice button 
       })
    }
+}
+
+// Function to shuffle an array using Fisher-Yates algorithm
+function shuffleArray(array) {
+   for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+   }
+   return array;
 }
 
 // function to add feedback when the choice is selected
@@ -122,7 +137,6 @@ function startTimer() {
 
 // fucntion to end the quiz
 function endQuiz() {
-   highScoreButton.classList.toggle("hide");
    // add the final score to the endscreen
    clearInterval(timerInterval);
    finalScore.textContent = scoreCount;
