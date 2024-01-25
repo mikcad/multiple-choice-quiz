@@ -1,4 +1,4 @@
-const questions = [
+let questions = [
     {
       title: "Who is the main protagonist in One Piece?",
       choices: ["Zoro", "Nami", "Luffy", "Sanji"],
@@ -26,3 +26,5 @@ const questions = [
     }
     // Add more questions as needed
   ];
+
+  questions = shuffleArray(questions);

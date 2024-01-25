@@ -37,6 +37,10 @@ function startQuiz () {
    highScoreButton.classList.toggle("hide");
    startContainer.classList.add("hide");
    questionContainer.classList.remove("hide");
+
+   const shuffledQuestions = shuffleArray(questions);
+   questions = shuffledQuestions;
+   
    displayQuestion();
    startTimer();
 }
