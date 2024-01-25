@@ -80,6 +80,14 @@ body {
    color: gray;
    border-top: 2px solid #ccc;
  }
+
+.feedback-correct {
+  color: lightgreen;
+}
+
+.feedback-incorrect {
+  color: lightcoral;
+}
  
  .timer {
    position: absolute;

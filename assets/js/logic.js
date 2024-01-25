@@ -83,10 +83,12 @@ function displayChoices() {
 // function to add feedback when the choice is selected
 function feedback() {
    quizFeedback.classList.remove("hide");
+   quizFeedback.classList.toggle("feedback-correct", isCorrect);
+   quizFeedback.classList.toggle("feedback-incorrect", !isCorrect);
    if (isCorrect === true) {
-      quizFeedback.textContent = "Correct! You get +10 points."
+      quizFeedback.textContent = "Correct! You get +10 points.";
    } else {
-      quizFeedback.textContent = "Incorrect! You get -10 seconds."
+      quizFeedback.textContent = "Incorrect! You get -10 seconds.";
    }
 }
 
