@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
+    <div id="score-button" class="scores"><a href="highscores.html">View Highscores</a></div>
 
     <div id="timer-container" class="timer hide">Time left: <span id="time">60</span></div>
 
@@ -31,7 +31,7 @@
         <h2>All done!</h2>
         <p>Your final score is <span id="final-score"></span>.</p>
         <p>
-          Enter initials: <input type="text" id="initials" maxlength="3" placeholder="3 characters max"/>
+          Enter initials: <input type="text" id="initials" maxlength="3" placeholder="3 characters max" required/>
           <button id="submit">Submit</button>
         </p>
       </div>

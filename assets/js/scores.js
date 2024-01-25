@@ -4,16 +4,6 @@ const clearButton = document.getElementById("clear");
 
 
 //fucntion to display the scores in the highscores list
-// function displayScores() {
-//    scoresArray = [];
-//    for (let i = 0; i < localStorage.length; i++) {
-//       const userInitials = localStorage.key(i);
-//       const userScore = localStorage.getItem(userInitials);
-//       const displayScores = document.createElement("li");
-//       displayScores.innerHTML += `${userInitials.toUpperCase()} - ${userScore} <br/>`;
-//       highScore.appendChild(displayScores)
-//    }
-// }
 function displayScores() {
    const scoresArray = [];
 

@@ -2,6 +2,7 @@
 // start screen variables
 const startContainer = document.getElementById("start-screen");
 const startButton = document.getElementById("start");
+const highScoreButton = document.getElementById("score-button");
 
 // question screen variables
 const questionContainer = document.getElementById("questions");
@@ -33,6 +34,7 @@ var timerInterval; // makes the timerInterval a global variable
 // Functions
 // fucntion that runs when the start button is clicked
 function startQuiz () {
+   highScoreButton.classList.toggle("hide");
    startContainer.classList.add("hide");
    questionContainer.classList.remove("hide");
    displayQuestion();
@@ -120,6 +122,7 @@ function startTimer() {
 
 // fucntion to end the quiz
 function endQuiz() {
+   highScoreButton.classList.toggle("hide");
    // add the final score to the endscreen
    clearInterval(timerInterval);
    finalScore.textContent = scoreCount;
