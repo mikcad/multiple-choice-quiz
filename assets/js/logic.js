@@ -146,7 +146,6 @@ function submitScore(event) {
 }
 
 
-
 // Event Listeners
 startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", submitScore);
