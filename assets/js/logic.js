@@ -143,7 +143,7 @@ function submitScore(event) {
 
       window.location.href = "/highscores.html";
    } else {
-      alert("Your input box is empty");
+      alert("Your input box is empty, please enter your initials.");
    }
 }
 
