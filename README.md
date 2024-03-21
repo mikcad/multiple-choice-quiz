@@ -33,16 +33,16 @@ A simple mulptiple choice quiz game based on the "One Piece" anime.
 
 ### Start Screen
 
-![start page for the quiz](https://github.com/mikcad/multiple-choice-quiz/tree/main/assets/images/start-quiz.png)
+![start page for the quiz](https://github.com/mikcad/multiple-choice-quiz/blob/main/assets/images/start-quiz.png)
 
 ### Quiz Screen
 
-![quizes with muliple choice answers](https://github.com/mikcad/multiple-choice-quiz/tree/main/assets/images/questions.png)
+![quizes with muliple choice answers](https://github.com/mikcad/multiple-choice-quiz/blob/main/assets/images/questions.png)
 
 ### End Screen
 
-![end screen, allowing users to submit their highscore with their initials](https://github.com/mikcad/multiple-choice-quiz/tree/main/assets/images/end-page.png)
+![end screen, allowing users to submit their highscore with their initials](https://github.com/mikcad/multiple-choice-quiz/blob/main/assets/images/end-page.png)
 
 ### Highscore Screen
 
-![highscore screen, displaying all the highscores that are stored locally](https://github.com/mikcad/multiple-choice-quiz/tree/main/assets/images/highscore-page.png)
+![highscore screen, displaying all the highscores that are stored locally](https://github.com/mikcad/multiple-choice-quiz/blob/main/assets/images/highscore-page.png)
